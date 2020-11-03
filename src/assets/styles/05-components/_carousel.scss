@@ -1,0 +1,115 @@
+.carousel {
+  width: 100%;
+  height: 500px;
+  max-width: 900px;
+  margin: 0 auto;
+  --animation-timing: 0.7s;
+
+  &__track {
+    width: 100%;
+    height: 89%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+  }
+
+  &__indicators {
+    margin-top: 0em;
+  }
+
+  &__indicator {
+    background-color: white;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    transition: background-color var(--animation-timing);
+  }
+
+  &__indicator + &__indicator {
+    margin-left: 0.5em;
+  }
+
+  &__indicator:hover {
+    cursor: pointer;
+  }
+
+  &__indicator.active {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  &__slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-200%);
+    pointer-events: none;
+    transition: transform var(--animation-timing) $animation-curve-default;
+
+    & figure {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      position: relative;
+
+      & img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+
+      & figcaption {
+        position: absolute;
+        bottom: 20px;
+        left: 15px;
+        color: $text-color-light;
+        background-color: rgba(darken($text-color-light, 20%), 0.5);
+        display: inline-block;
+        padding: 0.5em;
+
+        @include mq(lg) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  &__slide.previous {
+    transform: translateX(-100%);
+    z-index: 10;
+  }
+
+  &__slide.current {
+    transform: translateX(0);
+    z-index: 10;
+  }
+
+  &__slide.next {
+    transform: translateX(100%);
+    z-index: 10;
+  }
+
+  &__slide.next + &__slide {
+    transform: translateX(200%);
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0;
+
+    @include mq(lg) {
+      justify-content: space-evenly;
+    }
+
+    & button {
+      background-color: rgba(darken($text-color-light, 50%), 0.9);
+      border: 0;
+      cursor: pointer;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+  }
+}

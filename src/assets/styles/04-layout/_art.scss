@@ -1,0 +1,9 @@
+.art {
+  background-color: $bg-color-dark;
+  padding: 2.5em 0;
+  &__heading {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 1em;
+  }
+}

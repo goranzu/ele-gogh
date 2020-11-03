@@ -1,0 +1,20 @@
+<div class="carousel__track">
+  {% formatSlides slides %}
+</div>
+<div class="carousel__controls controls">
+  <button hidden class="controls__previous">
+    <span class="sr-only">Show previous slide</span>
+    <img src="{{ '/assets/images/icons/arrow-left.svg' | url }}" alt="left arrow" inline>
+  </button>
+  <ol class="carousel__indicators">
+    {% for slide in slides %}
+      <li class="carousel__indicator {% if loop.index - 1 === 0 %}active{% endif %}" data-index="{{ loop.index - 1 }}">
+        <button class="sr-only"> go to slide {{ loop.index }}</button>
+      </li>
+    {% endfor %}
+  </ol>
+  <button hidden class="controls__next">
+    <span class="sr-only">Show next slide</span>
+    <img src="{{ '/assets/images/icons/arrow-right.svg' | url }}" alt="right arrow" inline>
+  </button>
+</div>

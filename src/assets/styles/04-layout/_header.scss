@@ -1,0 +1,23 @@
+.header {
+  background-color: $header-bg-color;
+  padding: 1em 0;
+  margin-top: 0;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      width: 37px;
+      height: auto;
+    }
+
+    & > svg {
+      @include mq(lg) {
+        width: 42px;
+        height: auto;
+      }
+    }
+  }
+}
